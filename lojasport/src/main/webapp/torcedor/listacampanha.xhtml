@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:form>
+	<h:messages />
+	<h:dataTable var="campanha" value="#{adminListaCampanhaBean.campanhas}">
+		<h:column>
+			<f:facet name="header">Nome da Campanha</f:facet>
+		#{campanha.nomeCampanha}
+	</h:column>
+		<h:column>
+			<f:facet name="header">Data de Vigência Inicial</f:facet>
+		#{campanha.dtVigenciaInicial}
+	</h:column>
+		<h:column>
+			<f:facet name="header">Data de Vigência Final</f:facet>
+		#{campanha.dtVigenciaFinal}
+	</h:column>
+		<h:column>
+			<f:facet name="header">Time</f:facet>
+			<ui:repeat value="#{campanha.timeCoracao}" var="timeCoracao">
+				#{timeCoracao.nomeTime}
+			</ui:repeat>
+		</h:column>
+		<h:column>
+			<h:link value="Remover" outcome="removecampanha">
+				<f:param name="idCampanha" value="#{campanha.idCampanha}" />
+			</h:link>
+		</h:column>
+	</h:dataTable>
+</h:form>
+</html>

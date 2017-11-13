@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    
+	<!--<persistence-unit name="lojasport" transaction-type="RESOURCE_LOCAL"> 
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> <class>br.com.lojasport.gerenciador.models.Campanha</class> -->
+	<persistence-unit name="lojasportDS" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/lojasportDS</jta-data-source>
+		<properties>
+			<!-- Propriedades JDBC <property name="javax.persistence.jdbc.driver" 
+				value="com.mysql.jdbc.Driver" /> <property name="javax.persistence.jdbc.url" 
+				value="jdbc:mysql://localhost:3306/lojasportdb" /> <property name="javax.persistence.jdbc.user" 
+				value="root" /> <property name="javax.persistence.jdbc.password" value="admin" 
+				/> -->
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+		</properties>
+	</persistence-unit>
+</persistence>
